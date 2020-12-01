@@ -105,3 +105,5 @@ dist
 
 # Ignore the entire /data file at root.
 data/*
+/data/*
+*/data/*
