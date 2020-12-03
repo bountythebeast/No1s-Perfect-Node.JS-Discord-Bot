@@ -7,8 +7,7 @@ class getsql extends Command {
 			name: "getsql",
 			description: "Backend command to retrieve database values for notifications.",
 			category: "System",
-			usage: "getsql",
-			aliases: []
+			usage: "getsql"
 		});
 	}
 
