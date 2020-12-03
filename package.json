@@ -22,6 +22,7 @@
     "moment-duration-format": "^2.2.2",
     "mysql": "^2.18.1",
     "readline-sync": "^1.4.9",
+    "simple-ssh": "^1.0.0",
     "string-table": "^0.1.5"
   },
   "devDependencies": {
