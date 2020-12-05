@@ -4,7 +4,9 @@
   "description": "NodeJS Discord Bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "lint": "eslint ."
   },
   "engines": {
     "node": ">=12"
@@ -12,18 +14,31 @@
   "author": "No1's Perfect | Server Host#6666",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "axios": "^0.21.0",
     "better-sqlite3": "^5.4.1",
     "chalk": "^2.4.1",
-    "discord.js": "^12.1.1",
+    "discord.js": "discordjs/discord.js",
+    "discord.js-commando": "discordjs/Commando",
     "enmap": "^5.0.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.2.7",
+    "fluent-ffmpeg": "^2.1.2",
     "klaw": "^2.1.1",
     "minecraft-query": "^1.0.9",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "mysql": "^2.18.1",
+    "node-opus": "^0.3.3",
+    "nodeactyl": "^2.0.3",
+    "onchange": "^7.1.0",
+    "opusscript": "^0.0.7",
     "readline-sync": "^1.4.9",
+    "serialize-javascript": "^5.0.1",
     "simple-ssh": "^1.0.0",
-    "string-table": "^0.1.5"
+    "simple-youtube-api": "^5.2.1",
+    "string-table": "^0.1.5",
+    "ytdl-core": "^4.1.2"
   },
   "devDependencies": {
     "eslint": "^6.0.1",

@@ -9,6 +9,7 @@ class stickymessage extends Command
             description: "Causes the message to be sticky until the command 'unstick' is run. It will delete and repost its message whenever a new message is sent.", //description
             usage: "stickymessage <message to be sticky>",//usage details. Should match the name and class
             permLevel: "Administrator",
+            category: "Guild Admin",
             aliases: ["stick", "sticky", "pin", "glue"]
         });
     }

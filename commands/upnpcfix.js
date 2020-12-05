@@ -11,8 +11,8 @@ class upnpcfix extends Command
 			name: "upnpcfix", //command name, should match class.
 			description: "A command to fix port issues with UPNPC on the backend. It automatically checks if it needs to run.", //description
             usage: "upnpcfix ", //usage details. Should match the name and class
-            category: "Admin Commands",
-            permLevel: "Administrator",
+            category: "Bot Admin Commands",
+            permLevel: "Bot Admin",
 			aliases: ["upnpc","upnpcfix","upnpcupdate","portfix","fixports"]
 		});
 	}

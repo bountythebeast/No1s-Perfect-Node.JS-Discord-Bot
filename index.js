@@ -262,7 +262,7 @@ process.on("uncaughtException", (err) => {
     console.error("Uncaught Exception: ", errorMsg);
     // Always best practice to let the code crash on uncaught exceptions. 
     // Because you should be catching them anyway.
-    process.exit(1); //remove this to prevent bot from shutting down on error
+    //process.exit(1); //remove this to prevent bot from shutting down on error
 });
 
 process.on("unhandledRejection", err => {

@@ -36,7 +36,7 @@ class balance extends Command
         let customlength
         if(!isNaN(args))
         {
-            if(args !== 0)
+            if(!args === undefined)
             {
                 pool.getConnection(function (err,connection)
                 {
