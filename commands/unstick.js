@@ -9,6 +9,7 @@ class unstick extends Command
             name: "unstick", //command name, should match class.
             description: "This command is used to Unstick, a sticky message. Should be run in the same channel as an existing sticky message.", //description
             usage: "unstick",//usage details. Should match the name and class
+            category: "Guild Admin",
             permLevel: "Administrator"
         });
     }
