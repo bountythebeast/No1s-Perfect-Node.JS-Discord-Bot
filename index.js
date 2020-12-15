@@ -4,13 +4,14 @@
 if (Number(process.version.slice(1).split(".")[0]) < 12) throw new Error("Node 12.0.0 or higher is required. Update Node on your system.");
 
 // Load up the discord.js library
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Guild } = require("discord.js");
 // We also load the rest of the things we need in this file:
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
 const klaw = require("klaw");
 const path = require("path");
+
 
 
 class No1sBot extends Client {
@@ -186,7 +187,7 @@ class No1sBot extends Client {
 // By default No1sBot needs Guilds, Guild Messages and Direct Messages to work.
 // For join messages to work you need Guild Members, which is privileged and requires extra setup.
 // For more info about intents see the README.
-const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES"];
+const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STATES"];
 
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,

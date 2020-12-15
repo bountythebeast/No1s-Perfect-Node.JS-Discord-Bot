@@ -1,6 +1,6 @@
 const Command = require("../base/Command.js");
-const node = require('nodeactyl');
-const application = node.Application;
+const nodeactyl = require('nodeactyl-v1-support')
+const node = nodeactyl.Client
 const PterodactylPanel = require("../data/PterodactylPanel.json");
 
 class panelapicheck extends Command 
@@ -19,11 +19,13 @@ class panelapicheck extends Command
 
 	async run (message, args, level) 
 	{
-        application.login(PterodactylPanel.HOST, PterodactylPanel.APIKey, (logged_in, msg) => 
+        node.login(PterodactylPanel.TestHost,PterodactylPanel.TestAPIKey, (logged_in, msg) => 
         {
             message.channel.send("Host/APIkey pair worked: "+logged_in)
-            console.log("Host/APIKey pair worked: "+logged_in); // return a Boolean (true/false) if logged in.
-        })
+			console.log("Host/APIKey pair worked: "+logged_in); // return a Boolean (true/false) if logged in.
+			console.error(msg)
+		});
+		
 	}
 }
 

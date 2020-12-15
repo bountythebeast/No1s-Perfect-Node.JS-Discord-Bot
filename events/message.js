@@ -33,6 +33,10 @@ module.exports = class {
 		return message.reply(`My prefix on this guild is \`${settings.prefix}\``);
 	}
 	
+	if(message.content.includes("yeet"))
+	{
+		message.channel.send("https://tenor.com/view/lion-king-throwing-off-a-cliff-simba-gif-5583349");
+	}
 
 	// Also good practice to ignore any message that does not start with our prefix,
 	// which is set in the configuration file.
@@ -112,7 +116,7 @@ module.exports = class {
 
 
 	// If the member on a guild is invisible or not cached, fetch them.
-	if (message.guild && !message.member) await message.guild.fetchMember(message.author);
+	//if (message.guild && !message.member) await message.guild.fetchMember(message.author);
 
 	// Get the user or member's permission level from the elevation
 	const level = this.client.permlevel(message);

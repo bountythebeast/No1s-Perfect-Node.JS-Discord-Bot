@@ -3,6 +3,7 @@ const Command = require("../base/Command.js");
 var serverstuff = require("../data/servers.json");
 const Query = require("minecraft-query");
 const getsql = require('./getsql');
+var mysql = require('mysql');
 var prestring ='```css\n  ~~~Current status of our servers: ~~~ \n';
 var networkdata = '';
 var datastring = '';
@@ -19,9 +20,10 @@ class getmcstats extends Command
             name: "getmcstats",
             description: "Get MC Server status",
             usage: "getmcstats",
+            aliases: ["mcstats","serverstats","minecraft","isitup","servers","mcstatus"]
         });
     }
-    async run (message, args, level) { // eslint-disable-line no-unused-vars
+    async run (message, args, level) { // can definity clean this up....
         var PortDifference = 100;
         var keys = Object.keys(serverstuff);
         //for(var i=0;i<keys.length;i++)
@@ -33,7 +35,7 @@ class getmcstats extends Command
             let IP = (serverstuff[keys[index]].IP);
             let Port = (serverstuff[keys[index]].Port);
             let Critical = (serverstuff[keys[index]].Critical);
-            await ms.init(IP,Port,function()
+            ms.init(IP,Port,function()
             {
                 if(ms.online)
                 {
@@ -74,16 +76,15 @@ class getmcstats extends Command
                                 port: DBPort
                             });
                 
-                            pool.getConnection(function (err,connection)
+                            pool.getConnection(function (err,connection) //this happens AFTER it sets the text of the datastring return. need to fix.
                             {
                                 var ret = [];
                                 var sql = "Select ID,UserName,DiscordID,Notification_Preference,IsAdmin FROM Discord_Users"
                                 connection.query(sql, function (err, rows, fields){
                                     connection.release();
-                                    console.log(rows);
                                     for (var i of rows)
                                     {
-                                        if(i.Notification_Preference)
+                                        if(i.Notification_Preference.toLowerCase === 'true')
                                         {
                                             datastring += "<@"+i.DiscordID+">"
                                         }
@@ -93,8 +94,26 @@ class getmcstats extends Command
                         } catch (e) {
                             console.log(e);
                         }
+                        //this won't work here... it loops over it.
+                        const botresponse = message.channel.send(datastring+"```") //needs await
+                        botresponse.react('✔').then(r => {message.react('❌')}); //this needs to be updated to the BOT's response, probably do a .then((msg) => {})
+                        botresponse.awaitReactions((reaction, user) => user.level == 9 && (reaction.emoji.name == '✔' || reaction.emoji.name == '❌'),
+                            {
+                                    max: 1, time: 60000 
+                            }).then(collected =>
+                            {
+                                if(collected.first().emoji.name == '✔')
+                                {
+                                    message.reply("Sending start command to Critical Servers [Debug, does not work yet.]");
+                                }
+                            }).catch(() => {
+                                message.channel.send("No reaction after 60 seconds, Critical servers were not sent start command.")
+                            });
                     }
-                    message.channel.send(datastring+"```");
+                    else
+                    {
+                        message.channel.send(datastring+"```");
+                    }
                     datastring = '';networkdata = '';
                 }
             });
