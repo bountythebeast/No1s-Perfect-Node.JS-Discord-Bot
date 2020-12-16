@@ -6,15 +6,15 @@ const Application = node.Application;
 const PterodactylPanel = require("../data/PterodactylPanel.json");
 var stringTable = require('string-table');
 
-class panelstart extends Command 
+class startServer extends Command 
 {
 	constructor (client) 
 	{
 		super(client, 
 		{
-			name: "panelstart", //command name, should match class.
+			name: "startServer", //command name, should match class.
 			description: "Admin command for use with Panel commands.", //description
-            usage: "panelstart <server name> | leave blank for all. Full list of Options (currently): \n survival,fivem,hub,rsp,relaxedsurvivalplus,skyblock,survivalhub,bungee,creative,factions,stafftest,limbo,login,ark,bo3,blackops,blackops3,cod4", //usage details. Should match the name and class
+            usage: "startServer <server name> | leave blank for all. Full list of Options (currently): \n survival,fivem,hub,rsp,relaxedsurvivalplus,skyblock,survivalhub,bungee,creative,factions,stafftest,limbo,login,ark,bo3,blackops,blackops3,cod4", //usage details. Should match the name and class
             category: "Bot Admin Commands",
             permLevel: "Bot Admin"
 		});
@@ -28,7 +28,7 @@ class panelstart extends Command
             Application.login(PterodactylPanel.HOST,PterodactylPanel.ApplicationAPI, (logged_in, msg) =>
             {
                 console.log("Log in Application (admin): "+logged_in)
-                panelSetup(message).then(temp => switchCase(temp)).then(result => {message.channel.send("```"+result+"```")}).catch(error => {console.log("Errors in panelstart command. \n"+error)})
+                panelSetup(message).then(temp => switchCase(temp)).then(result => {message.channel.send("```"+result+"```")}).catch(error => {console.log("Errors in startServer command. \n"+error)})
                 async function panelSetup(message)
                 {
                     try
@@ -181,4 +181,4 @@ class panelstart extends Command
 	}
 }
 
-module.exports = panelstart; //<------------ Don't forget this one!
+module.exports = startServer; //<------------ Don't forget this one!
