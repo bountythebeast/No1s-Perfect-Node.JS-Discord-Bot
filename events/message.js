@@ -32,10 +32,26 @@ module.exports = class {
 	if (message.content.match(prefixMention)) {
 		return message.reply(`My prefix on this guild is \`${settings.prefix}\``);
 	}
-	
-	if(message.content.includes("yeet"))
+
+	if(message.content.toLowerCase().includes("yeet"))
 	{
 		message.channel.send("https://tenor.com/view/lion-king-throwing-off-a-cliff-simba-gif-5583349");
+	}
+	if(message.content.toLowerCase() == "neat.")
+	{
+		message.channel.send("https://tenor.com/view/caboose-rv-b-neat-gif-11552229");
+	}
+	if(message.content.toLowerCase().includes("hello there"))
+	{
+		message.channel.send("https://tenor.com/view/hello-there-hi-there-greetings-gif-9442662")
+	}
+	if(message.content.toLowerCase().includes("bug"))
+	{
+		message.channel.send("https://ih1.redbubble.net/image.1302208043.6186/fposter,small,wall_texture,product,750x1000.jpg")
+	}
+	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\o"))
+	{
+		message.channel.send("o/")
 	}
 
 	// Also good practice to ignore any message that does not start with our prefix,
