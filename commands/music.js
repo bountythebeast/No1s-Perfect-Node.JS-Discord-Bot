@@ -2,7 +2,10 @@ const Command = require("../base/Command.js");
 const ytdl = require('ytdl-core');
 var stringTable = require('string-table');
 const queue = new Map();
-//I *should* split this into individual commands, and have it super the music.js class. 
+//I *should* split this into individual commands, and have it super the music.js class. This may come later, it was too out of my league when I wrote this.
+
+//Huge shoutout to https://gabrieltanner.org/blog/dicord-music-bot
+//I used Gabriel's guide to build the base and expanded from there!
 
 class music extends Command 
 {
@@ -136,6 +139,10 @@ class music extends Command
                         message.channel.send("Queue has been cleared.");
                     }
                     break;
+                case "playnow":
+                    //Can probably do something with serverQueue.songs.shift(); or maybe serverQueue.songs.shift(-1)??
+                    //Maybe do temp = serverQueue.songs, serverQueue.songs.push(x), serverQueue.songs.push(temp)?
+                    break;
                 case "queue":
                     if(!voiceChannel)
                     {
@@ -151,51 +158,64 @@ class music extends Command
                     // may wrap the above with something like if(queueContract.connection) so that i can skip the checks if the bot is already in a vc
                     if(serverQueue)
                     {
-                        async function getSongInfo(songURL)
+                        //songInfo = await getSongInfo(args[0])
+                        getSongInfo(args[0]).then(songInfo =>
                         {
-                            return await ytdl.getInfo(songURL);
-                        }
-
-                        songInfo = await getSongInfo(args[0])
-                        song = 
-                        {
-                            title: songInfo.videoDetails.title,
-                            url: songInfo.videoDetails.video_url,
-                        };
-                        if(!serverQueue)
-                        {
-                            const queueContract = 
+                            const song = 
                             {
-                                textChannel: message.channel,
-                                voiceChannel: voiceChannel,
-                                connection: null,
-                                songs: [],
-                                volume: 1,
-                                playing: true,
+                                title: songInfo.videoDetails.title,
+                                url: songInfo.videoDetails.video_url,
                             };
-                            queue.set(message.guild.id, queueContract);
-                            queueContract.songs.push(song);
-                            try
-                            {
-                                var connection = await voiceChannel.join();
-                                queueContract.connection = connection;
-                                play(message.guild, queueContract.songs[0]);
-                            }
-                            catch (err)
-                            {
-                                console.log("Error in MusicBot `Play` command try block.")
-                                console.error(err)
-                                queue.delete(message.guild.id);
-                                message.channel.send("Seems there was an error with that command. We stripped the data, error visible in console. Please try again.");
-                                //return message.channel.send("Seems there was an error with that command. We stripped the data, error visible in console. Please try again.");
-                            }
-                        }
-                        else
+                            return song
+                        }).then(song =>
                         {
-                            serverQueue.songs.push(song);
-                            console.log(serverQueue.songs);
-                            message.channel.send(`${song.title} has been added to the Queue.`); //need to update this later to clear queue then play.
-                            //return message.channel.send(`${song.title} has been added to the Queue.`); //need to update this later to clear queue then play.
+                            if(!serverQueue)
+                            {
+                                const queueContract = 
+                                {
+                                    textChannel: message.channel,
+                                    voiceChannel: voiceChannel,
+                                    connection: null,
+                                    songs: [],
+                                    volume: 1,
+                                    playing: true,
+                                };
+                                queue.set(message.guild.id, queueContract);
+                                queueContract.songs.push(song);
+                                try
+                                {
+                                    var connection = voiceChannel.join();
+                                    queueContract.connection = connection;
+                                    play(message.guild, queueContract.songs[0]);
+                                }
+                                catch (err)
+                                {
+                                    console.log("Error in MusicBot `Play` command try block.")
+                                    console.error(err)
+                                    queue.delete(message.guild.id);
+                                    message.channel.send("Seems there was an error with that command. We stripped the data, error visible in console. Please try again.");
+                                    //return message.channel.send("Seems there was an error with that command. We stripped the data, error visible in console. Please try again.");
+                                }
+                            }
+                            else
+                            {
+                                serverQueue.songs.push(song);
+                                console.log(serverQueue.songs);
+                                message.channel.send(`${song.title} has been added to the Queue.`); 
+                                //return message.channel.send(`${song.title} has been added to the Queue.`); //need to update this later to clear queue then play.
+                            }
+                        })
+                        
+                        // functions
+
+
+                        function getSongInfo(songURL)
+                        {
+                            return new Promise( (resolve) =>
+                            {
+                                resolve(ytdl.getInfo(songURL));
+                            });
+                            
                         }
                     }
                     else
@@ -336,120 +356,3 @@ class music extends Command
 }
 
 module.exports = music; //<------------ Don't forget this one!
-
-
-        /*
-        if (message.content.startsWith(`no1test/play`)) 
-        {
-            execute(message, serverQueue);
-            return;
-        }
-            else if (message.content.startsWith(`no1test/skip`)) 
-        {
-            skip(message, serverQueue);
-            return;
-        }
-            else if (message.content.startsWith(`no1test/stop`)) 
-        {
-            stop(message, serverQueue);
-            return;
-        }
-        else 
-        {
-            message.channel.send("You need to enter a valid command!");
-        }
-        async function execute(message, serverQueue) {
-            const args = message.content.split(" ");
-            const voiceChannel = message.member.voice.channel;
-            console.log("Checking vc "+voiceChannel)
-            if (!voiceChannel)
-              return message.channel.send(
-                "You need to be in a voice channel to play music!"
-              );
-            const permissions = voiceChannel.permissionsFor(message.client.user);
-            if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-              return message.channel.send(
-                "I need the permissions to join and speak in your voice channel!"
-              );
-            }
-          
-            const songInfo = await ytdl.getInfo(args[1]);
-            const song = {
-                  title: songInfo.videoDetails.title,
-                  url: songInfo.videoDetails.video_url,
-             };
-          
-            if (!serverQueue) {
-              const queueContruct = {
-                textChannel: message.channel,
-                voiceChannel: voiceChannel,
-                connection: null,
-                songs: [],
-                volume: 3,
-                playing: true
-              };
-          
-              queue.set(message.guild.id, queueContruct);
-          
-              queueContruct.songs.push(song);
-          
-              voiceChannel.join().then(connection => 
-                {
-                    connection.play(message.guild, queueContruct.songs[0])
-                }).catch(() => 
-                {            
-                });
-
-              try {
-                var connection = await voiceChannel.join();
-                queueContruct.connection = connection;
-                play(message.guild, queueContruct.songs[0]);
-              } catch (err) {
-                console.log(err);
-                queue.delete(message.guild.id);
-                return message.channel.send(err);
-              }
-            } else {
-              serverQueue.songs.push(song);
-              return message.channel.send(`${song.title} has been added to the queue!`);
-            }
-          }
-          
-          function skip(message, serverQueue) {
-            if (!message.member.voice.channel)
-              return message.channel.send(
-                "You have to be in a voice channel to stop the music!"
-              );
-            if (!serverQueue)
-              return message.channel.send("There is no song that I could skip!");
-            serverQueue.connection.dispatcher.end();
-          }
-          
-          function stop(message, serverQueue) {
-            if (!message.member.voice.channel)
-              return message.channel.send(
-                "You have to be in a voice channel to stop the music!"
-              );
-            serverQueue.songs = [];
-            serverQueue.connection.dispatcher.end();
-          }
-          
-          function play(guild, song) {
-            const serverQueue = queue.get(guild.id);
-            if (!song) {
-              serverQueue.voiceChannel.leave();
-              queue.delete(guild.id);
-              return;
-            }
-          
-            const dispatcher = serverQueue.connection
-              .play(ytdl(song.url))
-              .on("finish", () => {
-                serverQueue.songs.shift();
-                play(guild, serverQueue.songs[0]);
-              })
-              .on("error", error => console.error(error));
-            dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-            serverQueue.textChannel.send(`Start playing: **${song.title}**`);
-          }
-          */
