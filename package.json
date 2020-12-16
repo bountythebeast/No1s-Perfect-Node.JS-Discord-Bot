@@ -26,6 +26,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "klaw": "^2.1.1",
     "minecraft-query": "^1.0.9",
+    "minecraft-server-util": "^3.4.1",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "mysql": "^2.18.1",
@@ -39,7 +40,7 @@
     "simple-ssh": "^1.0.0",
     "simple-youtube-api": "^5.2.1",
     "string-table": "^0.1.5",
-    "ytdl-core": "^4.1.4"
+    "ytdl-core": "^4.1.5"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
