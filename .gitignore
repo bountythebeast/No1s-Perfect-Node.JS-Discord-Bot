@@ -109,3 +109,6 @@ data/*
 */data/*
 config.js
 config.js
+config.json
+commands/todo
+commands/test.js

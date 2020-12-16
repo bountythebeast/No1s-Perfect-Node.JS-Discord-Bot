@@ -4,21 +4,23 @@ const getsql = require('./getsql');
 const util = require('minecraft-server-util');
 var mysql = require('mysql');
 
-//Were taking advantage of https://developer.aliyun.com/mirror/npm/package/minecraft-server-util
+// Were taking advantage of https://developer.aliyun.com/mirror/npm/package/minecraft-server-util
 //and their minecraft-server-util extension! Huge Shoutout!
+
+//This was a testing file for replacing getMCStats.js
+
 
 var criticaloffline = false;
 const CriticalOfflineServers = [];
 
-class getmcstats extends Command
+class test2 extends Command
 {
     constructor (client)    
     {
         super(client, {
-            name: "getmcstats",
+            name: "test2",
             description: "Get MC Server status",
-            usage: "getmcstats",
-            aliases: ["mcstats","serverstats","minecraft","isitup","servers","mcstatus"]
+            usage: "test2"
         });
     }
     async run (message, args, level) { // can definity clean this up....
@@ -139,4 +141,4 @@ class getmcstats extends Command
         }
     }
 }
-module.exports = getmcstats;
+module.exports = test2;

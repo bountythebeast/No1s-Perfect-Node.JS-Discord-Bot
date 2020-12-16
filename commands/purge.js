@@ -54,6 +54,11 @@ class purge extends Command
                 args[1] = message.channel
             }
         }
+        if(args[1].startsWith('<#') && (args[1].endsWith('>')))
+        {
+            args[1] = args[1].slice(2,-1);
+            args[1] = message.guild.channels.cache.get(args[1])
+        }
 
 
         if(args[0].toLowerCase() === "all")
@@ -99,11 +104,11 @@ class purge extends Command
                         let username = deleteMessages[0].author.username
                         if(morethan)
                         {
-                            message.channel.send(`<@${message.author.id}> Cleared ${deleteMessages.length} (max) messages from all users in <#${args[1].id}>`)
+                            message.channel.send(`<@${message.author.id}> Cleared ${deleteMessages.length} (max) messages from ${username} in <#${args[1].id}>`)
                         }
                         else
                         {
-                            message.channel.send(`<@${message.author.id}> Cleared ${deleteMessages.length} messages from all users in <#${args[1].id}>`)
+                            message.channel.send(`<@${message.author.id}> Cleared ${deleteMessages.length} messages from ${username} in <#${args[1].id}>`)
                         }
                     }
                     else

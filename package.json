@@ -18,19 +18,21 @@
     "axios": "^0.21.0",
     "better-sqlite3": "^5.4.1",
     "chalk": "^2.4.1",
-    "discord.js": "discordjs/discord.js",
-    "discord.js-commando": "discordjs/Commando",
+    "discord.js": "github:discordjs/discord.js",
+    "discord.js-commando": "github:discordjs/Commando",
     "enmap": "^5.0.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
     "klaw": "^2.1.1",
     "minecraft-query": "^1.0.9",
+    "minecraft-server-util": "^3.4.1",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "mysql": "^2.18.1",
     "node-opus": "^0.3.3",
     "nodeactyl": "^2.0.3",
+    "nodeactyl-v1-support": "^1.2.5",
     "onchange": "^7.1.0",
     "opusscript": "^0.0.7",
     "readline-sync": "^1.4.9",
@@ -38,7 +40,7 @@
     "simple-ssh": "^1.0.0",
     "simple-youtube-api": "^5.2.1",
     "string-table": "^0.1.5",
-    "ytdl-core": "^4.1.2"
+    "ytdl-core": "^4.1.6"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
@@ -48,5 +50,14 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bountythebeast/No1s-Perfect-Node.JS-Discord-Bot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/bountythebeast/No1s-Perfect-Node.JS-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/bountythebeast/No1s-Perfect-Node.JS-Discord-Bot#readme"
 }
