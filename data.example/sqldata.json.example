@@ -1,0 +1,8 @@
+{
+    "DBUser": "databaseUser",
+    "DBPass": "aSecurepassw0rd",
+    "DBName": "databasename",
+    "DBIP": "x.x.x.x",
+    "DBPort": "port",
+    "SurvivalBalanceDBName": "dbname"
+}

@@ -1,0 +1,9 @@
+{
+    "Network" : {"IP": "x.x.x.x","Port": 123,"Critical": "True","Query":123},
+    "Hub" : {"IP": "x.x.x.x","Port": 123,"Critical": "True","Query": 123},
+    "Survival" : {"IP": "x.x.x.x","Port": 123,"Critical": "True","Query":123},
+    "Factions" : {"IP": "x.x.x.x","Port": 123,"Critical": "False","Query":123},
+    "SkyBlock" : {"IP": "x.x.x.x","Port": 123,"Critical": "False","Query":123},
+    "SurvivalHub" : {"IP": "x.x.x.x","Port": 123,"Critical": "True","Query":123},
+    "Creative" : {"IP": "x.x.x.x","Port": 123,"Critical": "True","Query":123}
+}
