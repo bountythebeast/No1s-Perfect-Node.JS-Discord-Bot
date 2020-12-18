@@ -54,14 +54,18 @@ class purge extends Command
                 args[1] = message.channel
             }
         }
-        if(args[1].startsWith('<#') && (args[1].endsWith('>')))
+        if((typeof args[1] === String) && (args[1].startsWith('<#') && (args[1].endsWith('>'))))
         {
             args[1] = args[1].slice(2,-1);
             args[1] = message.guild.channels.cache.get(args[1])
         }
 
-
-        if(args[0].toLowerCase() === "all")
+        if(Number(args[0]))
+        {
+            args[2] = args[0]
+            args[0] = "all"
+        }
+        if((args[0].toLowerCase() === "all") || (Number(args[0])))
         {
             args[1].messages.fetch(
             {

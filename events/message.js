@@ -49,9 +49,26 @@ module.exports = class {
 	{
 		message.channel.send("https://ih1.redbubble.net/image.1302208043.6186/fposter,small,wall_texture,product,750x1000.jpg")
 	}
-	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\o"))
+	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\\\o"))
 	{
-		message.channel.send("o/")
+		if(message.content.toLowerCase() == "o/")
+			message.channel.send("\\\o")
+		else
+		{
+			message.channel.send("o/")
+		}
+	}
+	function getRandom(min,max) {return Math.random() * (max-min)+min}
+	if(message.content.toLowerCase().includes("general kenobi"))
+	{
+		if(getRandom(1,5) === 3)
+		{
+			message.channel.send("https://tenor.com/view/another-one-for-my-collection-grievous-lightsaber-gif-16775319")			
+		}
+		else
+		{
+			message.channel.send("https://tenor.com/view/general-kenobi-turn-around-star-wars-gif-15335963")
+		}
 	}
 
 	// Also good practice to ignore any message that does not start with our prefix,
@@ -123,6 +140,8 @@ module.exports = class {
 		}
 	}
 	
+	if (message.content.indexOf(settings.prefix) !== 0) return;
+
 	// Here we separate our "command" name, and our "arguments" for the command.
 	// e.g. if we have the message "+say Is this the real life?" , we'll get the following:
 	// command = say

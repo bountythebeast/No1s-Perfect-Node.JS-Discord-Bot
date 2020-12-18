@@ -1,0 +1,8 @@
+{
+    "BotVersion": "v0.2",
+    "LastUpdated": "12/3/2020",
+    "LastUpdatedBy": "No1's Perfect | Server Host",
+    "NewFeatures": " + Balance <optional: Name> \n    -> Description: Shows the top 100, or wildcard user's economy on our survival server. \n + Notify \n    -> Description: Add the ability for players or staff to modify their notification preferences via the bot. (SQL table updates)",
+    "RemovedFeatures" : " \n",
+    "Pendingchanges" : "\n + Administrative commands!"
+}

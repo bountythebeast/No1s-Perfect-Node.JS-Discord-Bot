@@ -22,6 +22,7 @@ class serverstatus extends Command
 
 	async run (message, args, level) 
 	{
+        message.channel.send("Retrieving server status! This may take a second.")
         Client.login(PterodactylPanel.HOST,PterodactylPanel.ClientAPI, (logged_in, msg) =>
         {
             console.log("Log in Client (user): "+logged_in)

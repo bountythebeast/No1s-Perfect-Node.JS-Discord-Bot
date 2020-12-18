@@ -1,0 +1,6 @@
+{
+    "HOST": "https://panel.yourdomain.com",
+    "ApplicationAPI": "apikey",
+    "AdminAPI": "apikey",
+    "ClientAPI": "apikey"
+}
