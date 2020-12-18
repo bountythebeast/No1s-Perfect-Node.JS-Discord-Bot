@@ -49,9 +49,14 @@ module.exports = class {
 	{
 		message.channel.send("https://ih1.redbubble.net/image.1302208043.6186/fposter,small,wall_texture,product,750x1000.jpg")
 	}
-	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\o"))
+	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\\\o"))
 	{
-		message.channel.send("o/")
+		if(message.content.toLowerCase() == "o/")
+			message.channel.send("\\\o")
+		else
+		{
+			message.channel.send("o/")
+		}
 	}
 	function getRandom(min,max) {return Math.random() * (max-min)+min}
 	if(message.content.toLowerCase().includes("general kenobi"))

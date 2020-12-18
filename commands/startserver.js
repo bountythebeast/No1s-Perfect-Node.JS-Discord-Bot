@@ -198,7 +198,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "relaxed survival plus":
+                            case "rsp":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -208,7 +208,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "midnight skyblock":
+                            case "skyblock":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -218,7 +218,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "survival hub":
+                            case "survivalhub":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -228,7 +228,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "bungeecord backend":
+                            case "bungee":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -238,7 +238,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "midnight classic factions":
+                            case "factions":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -248,7 +248,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "limbo server (login server)":
+                            case "limbo":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -258,7 +258,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "midnight ark":
+                            case "ark":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -268,7 +268,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "midnight blops3":
+                            case "blackops3":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -278,7 +278,7 @@ class startserver extends Command
                                 offlinewithreactions.push(ThisReaction)
                                 resolve()
                                 break;
-                            case "midnight cod4x server":
+                            case "cod4":
                                 var ThisReaction = 
                                 {
                                     ServerName: name.ServerName,
@@ -299,29 +299,29 @@ class startserver extends Command
                 {
                     return new Promise( (resolve) =>
                     {
-                        switch (processarg) 
+                        switch (processarg.toLowerCase()) 
                         {
                             case "survival":
-                                startServer("9df8864b","Survival").then((ret) =>
+                                startServer("9df8864b","survival").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
                             case "fivem":
-                                startServer("9320ca1a","FiveM").then((ret) =>
+                                startServer("9320ca1a","fivem").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
                             case "hub":
-                                startServer("c59c7841","Hub").then((ret) =>
+                                startServer("c59c7841","hub").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
                             case "rsp":
                             case "relaxedsurvivalplus":
-                                startServer("a2d148da","Relaxed Survival Plus").then((ret) =>
+                                startServer("a2d148da","RSP").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
@@ -333,7 +333,7 @@ class startserver extends Command
                                 })
                                 break;
                             case "survivalhub":
-                                startServer("7c87b0ee","Survival Hub").then((ret) =>
+                                startServer("7c87b0ee","SurvivalHub").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
@@ -356,15 +356,15 @@ class startserver extends Command
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
-                            case "stafftest":
-                                startServer("88ebd7df","Staff Test").then((ret) =>
+                            case "stafftestserver":
+                                startServer("88ebd7df","StaffTestserver").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
                             case "limbo":
                             case "login":
-                                startServer("5a0cd357","Limbo/Login").then((ret) =>
+                                startServer("5a0cd357","Limbo").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
@@ -378,13 +378,13 @@ class startserver extends Command
                             case "bo3":
                             case "blackops":
                             case "blackops3":
-                                startServer("fd9a617f","Black Ops 3").then((ret) =>
+                                startServer("fd9a617f","blackops3").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
                                 break;
                             case "cod4":
-                                startServer("6e64eda2","COD 4").then((ret) =>
+                                startServer("6e64eda2","cod4").then((ret) =>
                                 {
                                     resolve(stringTable.create([ret]));
                                 })
