@@ -16,7 +16,7 @@ class whereami extends Command
 
 	async run (message, args, level) 
 	{ 
-        message.channel.send("List of current servers the bot is in: \n```"+ this.client.guilds.cache.map(guild => guild.name)+"```")
+        message.channel.send("List of current servers the bot is in:"+` ${this.client.guilds.cache.size} server(s)! \nHere's a list of their names!` +" \n```"+ this.client.guilds.cache.map(guild => guild.name)+"```")
 	}
 }
 
