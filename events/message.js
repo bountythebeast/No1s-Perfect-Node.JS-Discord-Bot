@@ -139,7 +139,51 @@ module.exports = class {
 			}
 		}
 	}
-	
+
+/*
+botmsg.edit(botmsg.cleanContent + "\n```"+stringTable.create(offlinewithreactions)+"```\n>>Bot is currently awaiting a reaction.")
+const filter = (reaction,user) => 
+{
+	return currentreactions.includes(reaction.emoji.name) && ((user.id === message.author.id) || (user.id === message.client.appInfo.owner.id) || config.admins.contains(user.id))//As long as the command author (which requires perms) === reactor, were good.
+}
+botmsg.awaitReactions(filter, {max: 1, time: 60000, errors: ['time']})
+.then(collected => 
+{
+*/
+
+	//if a youtube link is sent, bot reacts with 🎧 and within 60 seconds, a user can react with it to have the bot attempt to play this song.
+	if(message.content.includes("youtube.com")|| message.content.includes("youtu.be"))
+	{
+		//if message is a youtube url, react with 🎧. If reacted with, bot will join vc and begin playing song
+		message.react('🎧')
+		.then(() =>
+		{
+			message.awaitReactions((reaction) => reaction.emoji.name == '🎧', {max: 1, time: 60000})
+			.then(collected => 
+			{
+				if(collected.first().emoji.name == '🎧')
+				{
+					if(message.member.voice.channel)
+					{
+						message.content = settings.prefix + "play "+message.content 
+						console.log(message.content) //i want to see if it is prefix/play url or not considering the read-only is just the url.
+						const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+						const command = args.shift().toLowerCase();
+						const level = this.client.permlevel(message);
+						const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
+						this.client.logger.log(`${this.client.config.permLevels.find(l => l.level === level).name} ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
+						cmd.run(message, args, level);
+					}
+					else
+					{
+						message.channel.send("Hey! The emoji 🎧 is an automated emoji to let me join a VC and play that song! But you need to be in a voice Channel to use it!")
+					}
+				}
+			})
+		})
+		
+	}
+
 	if (message.content.indexOf(settings.prefix) !== 0) return;
 
 	// Here we separate our "command" name, and our "arguments" for the command.

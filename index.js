@@ -193,6 +193,11 @@ const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STA
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're refering to. Your client.
 const client = new No1sBot({ ws: {intents: intents } });
+console.log("Running with intents: "+intents)
+if(intents.includes("GUILD_PRESENCES") || intents.includes("presenceUpdate"))
+{
+    console.log("⚠ RUNNING WITH PRIVLEGES ⚠")
+}
 
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
