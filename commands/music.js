@@ -82,7 +82,7 @@ class music extends Command
                             voiceChannel: voiceChannel,
                             connection: null,
                             songs: [],
-                            volume: 1,
+                            volume: 2,
                             playing: true,
                         };
                         queue.set(message.guild.id, queueContract);
@@ -177,7 +177,7 @@ class music extends Command
                                     voiceChannel: voiceChannel,
                                     connection: null,
                                     songs: [],
-                                    volume: 1,
+                                    volume: 2,
                                     playing: true,
                                 };
                                 queue.set(message.guild.id, queueContract);
