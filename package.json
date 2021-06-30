@@ -41,7 +41,7 @@
     "simple-ssh": "^1.0.0",
     "simple-youtube-api": "^5.2.1",
     "string-table": "^0.1.5",
-    "ytdl-core": "^4.3.0"
+    "ytdl-core": "^4.8.3"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
