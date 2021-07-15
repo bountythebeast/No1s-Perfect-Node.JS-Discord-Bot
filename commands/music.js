@@ -152,6 +152,17 @@ class music extends Command
                     
                     if((playlist === null) && (firstrun === true))
                     {
+                        const queueContract = 
+                        {
+                            textChannel: message.channel,
+                            voiceChannel: voiceChannel,
+                            connection: null,
+                            songs: [],
+                            volume: 2,
+                            playing: true,
+                        };
+                        queue.set(message.guild.id, queueContract);
+                        queueContract.songs.push(song);
                         try
                         {
                             playlist = await ytpl(args[0]);
@@ -383,6 +394,12 @@ class music extends Command
                                 {
                                     title: songInfo.videoDetails.title,
                                     url: songInfo.videoDetails.video_url,
+                                    textChannel: message.channel,
+                                    voiceChannel: voiceChannel,
+                                    connection: null,
+                                    songs: [],
+                                    volume: 2,
+                                    playing: true,
                                 };
                                 return song
                             }).then(song =>

@@ -49,7 +49,7 @@ class bubblewrapgenerator extends Command
                 console.log(outputline.length)
                 if(outputline.length > 1999)
                 {
-                    message.channel.send("While i'd love to provide you with that massive bubble wrap sheet, Discordâ„¢ limits me to 2,000 Characters.")
+                    message.channel.send("While i'd love to provide you with that massive bubble wrap sheet, Discord™ limits me to 2,000 Characters.")
                 }
                 else
                 {
