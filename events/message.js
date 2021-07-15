@@ -1,7 +1,3 @@
-// The MESSAGE event runs anytime a message is received
-// Note that due to the binding of client to every event, every event
-// goes `client, other, args` when this function is run.
-
 const stickymessage = require('../commands/stickymessage');
 
 module.exports = class {
@@ -32,7 +28,36 @@ module.exports = class {
 	if (message.content.match(prefixMention)) {
 		return message.reply(`My prefix on this guild is \`${settings.prefix}\``);
 	}
-
+	if((message.content.toLowerCase() === "hi") || (message.content.toLowerCase() === "hello") || (message.content.toLowerCase() === "ello") || (message.content.toLowerCase() === "hey") || (message.content.toLowerCase() ==="aloha"))
+	{
+		switch(getRandom(3))
+		{
+			case 1:
+				message.channel.send("Hello!")
+				break;
+			case 2:
+				message.channel.send("o.O New bot who dis?")
+				break;
+			default:
+				message.channel.send("o/")
+				break;
+		}
+	}
+	if(message.content.toLowerCase().includes("mornin"))
+	{
+		switch(getRandom(3))
+		{
+			case 1:
+				message.channel.send("https://tenor.com/view/good-morning-sunshine-sun-sunshine-gif-5358874")
+				break;
+			case 2:
+				message.channel.send("https://stocki.typepad.com/.a/6a00e0097df5fe88330240a51abc54200b-pi")
+				break;
+			default:
+				message.react("🌅")
+				break;
+		}
+	}
 	if(message.content.toLowerCase().includes("yeet"))
 	{
 		message.channel.send("https://tenor.com/view/lion-king-throwing-off-a-cliff-simba-gif-5583349");
@@ -49,6 +74,14 @@ module.exports = class {
 	{
 		message.channel.send("https://ih1.redbubble.net/image.1302208043.6186/fposter,small,wall_texture,product,750x1000.jpg")
 	}
+	if(message.content.toLowerCase().includes("shit"))
+	{
+		message.react("💩")
+	}
+	if(message.content.toLowerCase().includes("snowflake"))
+	{
+		message.channel.send("Okay Boomer ❄")
+	}
 	if((message.content.toLowerCase() == "o/") || (message.content.toLowerCase() == "\\\o"))
 	{
 		if(message.content.toLowerCase() == "o/")
@@ -58,10 +91,10 @@ module.exports = class {
 			message.channel.send("o/")
 		}
 	}
-	function getRandom(min,max) {return Math.random() * (max-min)+min}
+	function getRandom(max) {return Math.floor(Math.random()*max)}
 	if(message.content.toLowerCase().includes("general kenobi"))
 	{
-		if(getRandom(1,5) === 3)
+		if(getRandom(5) === 3)
 		{
 			message.channel.send("https://tenor.com/view/another-one-for-my-collection-grievous-lightsaber-gif-16775319")			
 		}
@@ -70,6 +103,40 @@ module.exports = class {
 			message.channel.send("https://tenor.com/view/general-kenobi-turn-around-star-wars-gif-15335963")
 		}
 	}
+	if(message.content.toLowerCase().includes("secret"))
+	{
+		if(getRandom(3) === 2)
+		{
+			message.channel.send("https://tenor.com/view/secret-boss-baby-on-the-phone-gif-7991222")
+		}
+	}
+	if(message.content.toLowerCase().includes("new bot who dis"))
+	{
+		message.reply("OI THATS MY LINE!")
+	}
+	if(message.content.toLowerCase().includes("good evening"))
+	{
+		if(getRandom(3) === 2)
+		{
+			message.channel.send("https://tenor.com/view/good-evening-dracula-happy-halloween-gif-10113031")
+		}
+	}
+	if(message.content.toLowerCase().includes("bubble wrap"))
+	{
+		message.channel.send(`**BubbleWrap Delivery** Enjoy 
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||
+||POP||||POP||||POP||||POP||||POP||||POP||||POP||||POP||`)
+	}
+
 
 	// Also good practice to ignore any message that does not start with our prefix,
 	// which is set in the configuration file.
@@ -140,33 +207,28 @@ module.exports = class {
 		}
 	}
 
-/*
-botmsg.edit(botmsg.cleanContent + "\n```"+stringTable.create(offlinewithreactions)+"```\n>>Bot is currently awaiting a reaction.")
-const filter = (reaction,user) => 
-{
-	return currentreactions.includes(reaction.emoji.name) && ((user.id === message.author.id) || (user.id === message.client.appInfo.owner.id) || config.admins.contains(user.id))//As long as the command author (which requires perms) === reactor, were good.
-}
-botmsg.awaitReactions(filter, {max: 1, time: 60000, errors: ['time']})
-.then(collected => 
-{
-*/
-
 	//if a youtube link is sent, bot reacts with 🎧 and within 60 seconds, a user can react with it to have the bot attempt to play this song.
 	if(message.content.includes("youtube.com")|| message.content.includes("youtu.be"))
 	{
 		//if message is a youtube url, react with 🎧. If reacted with, bot will join vc and begin playing song
 		message.react('🎧')
-		.then(() =>
+		/*.then(() => //This was commented out due to it failing in production environment... Caused the unintentional bug (or feature) that when you paste a youtube link while in a vc the bot auto joins.
 		{
-			message.awaitReactions((reaction) => reaction.emoji.name == '🎧', {max: 1, time: 60000})
+			//filter out bot reactions.
+			const filter = (reaction) => 
+			{
+				return reaction.emoji.name == '🎧'// && reaction.author.bot //<- may need to get this working if a second bot adopts this.
+			}
+			console.log("A reaction was added to a Youtube URL")
+			message.awaitReactions(filter, {max: 1, time: 60000, errors: ["time"]})
 			.then(collected => 
 			{
 				if(collected.first().emoji.name == '🎧')
 				{
 					if(message.member.voice.channel)
 					{
+						console.log("User reacted")
 						message.content = settings.prefix + "play "+message.content 
-						console.log(message.content) //i want to see if it is prefix/play url or not considering the read-only is just the url.
 						const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
 						const command = args.shift().toLowerCase();
 						const level = this.client.permlevel(message);
@@ -179,9 +241,12 @@ botmsg.awaitReactions(filter, {max: 1, time: 60000, errors: ['time']})
 						message.channel.send("Hey! The emoji 🎧 is an automated emoji to let me join a VC and play that song! But you need to be in a voice Channel to use it!")
 					}
 				}
+			}).catch(() =>
+			{
+				Console.log("Reaction Timeout.")
 			})
 		})
-		
+		*/		
 	}
 
 	if (message.content.indexOf(settings.prefix) !== 0) return;

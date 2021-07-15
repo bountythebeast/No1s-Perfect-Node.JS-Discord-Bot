@@ -187,7 +187,7 @@ class No1sBot extends Client {
 // By default No1sBot needs Guilds, Guild Messages and Direct Messages to work.
 // For join messages to work you need Guild Members, which is privileged and requires extra setup.
 // For more info about intents see the README.
-const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STATES", "GUILD_MESSAGE_REACTIONS"];
+const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STATES", "GUILD_MESSAGE_REACTIONS", "GUILD_MEMBERS", "GUILD_PRESENCES"];
 
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,

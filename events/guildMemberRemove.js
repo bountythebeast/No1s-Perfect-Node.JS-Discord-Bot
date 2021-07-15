@@ -1,4 +1,4 @@
-// This event executes when a new member joins a server. Let's welcome them!
+// This event executes when a member leaves.
 
 module.exports = class 
 {

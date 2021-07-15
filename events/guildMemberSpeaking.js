@@ -6,6 +6,6 @@ module.exports = class
 	}
 	async run (member)
 	{
-        console.log(member.user.username + " is speaking!!")
+        //console.log(member.user.username + " is speaking!!")
 	};
 }
