@@ -16,7 +16,6 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
     "axios": "^0.21.0",
-    "better-sqlite3": "^5.4.1",
     "chalk": "^2.4.1",
     "discord.js": "github:discordjs/discord.js",
     "discord.js-commando": "github:discordjs/Commando",
