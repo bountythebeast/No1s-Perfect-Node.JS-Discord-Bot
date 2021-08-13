@@ -4,7 +4,7 @@
 if (Number(process.version.slice(1).split(".")[0]) < 12) throw new Error("Node 12.0.0 or higher is required. Update Node on your system.");
 
 // Load up the discord.js library
-const { Client, Collection, Guild } = require("discord.js");
+const { Client, Collection} = require("discord.js");
 // We also load the rest of the things we need in this file:
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
@@ -193,10 +193,10 @@ const intents = ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STA
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're refering to. Your client.
 const client = new No1sBot({ ws: {intents: intents } });
-console.log("Running with intents: "+intents)
-if(intents.includes("GUILD_PRESENCES") || intents.includes("presenceUpdate"))
+console.log("Running with intents: "+intents);
+if (intents.includes("GUILD_PRESENCES") || intents.includes("presenceUpdate"))
 {
-    console.log("⚠ RUNNING WITH PRIVLEGES ⚠")
+    console.log("⚠ RUNNING WITH PRIVLEGES ⚠");
 }
 
 // We're doing real fancy node 8 async/await stuff here, and to do that

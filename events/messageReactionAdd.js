@@ -11,7 +11,7 @@ module.exports = class
 		let message = reaction.message
 		const settings = this.client.getSettings(message.guild);
 		
-		if (reaction.emoji.name == '🎵' && reaction.count > 1)
+		if (reaction.emoji.name == '🎧' && reaction.count > 1)
 		{
 			message = reaction.message
 			if(message.content.includes("youtube.com")|| message.content.includes("youtu.be"))
@@ -31,7 +31,7 @@ module.exports = class
 				}
 				else
 				{
-					message.channel.send("Hey! The emoji 🎵 is an automated emoji to let me join a VC and play that song! But you need to be in a voice Channel to use it!")
+					message.channel.send("Hey! The emoji 🎧 is an automated emoji to let me join a VC and play that song! But you need to be in a voice Channel to use it!")
 				}
 			}
 		}

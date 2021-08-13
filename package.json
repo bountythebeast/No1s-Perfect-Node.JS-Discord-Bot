@@ -36,6 +36,7 @@
     "nodeactyl-v1-support": "^1.2.5",
     "onchange": "^7.1.0",
     "opusscript": "^0.0.7",
+    "paypal-invoices": "^1.5.0",
     "paypal-rest-sdk": "^1.8.1",
     "readline-sync": "^1.4.9",
     "serialize-javascript": "^5.0.1",

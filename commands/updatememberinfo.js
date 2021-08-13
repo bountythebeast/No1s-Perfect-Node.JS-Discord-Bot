@@ -36,7 +36,6 @@ class updatememberinfo extends Command
                     {
                         rolenumber = message.guild.members.cache.filter(member => !member.user.bot).size;
                     }
-
                     message.guild.channels.cache.get(messagedata.Channel).setName(`${messagedata.channelname} ${rolenumber}`)
                     //message.channel.send(`[DEBUG] Attempting to update: ${messagedata.channelname} with ${messagedata.channelname} ${rolenumber}`)
                 }

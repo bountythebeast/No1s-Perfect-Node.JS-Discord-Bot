@@ -162,7 +162,8 @@ class music extends Command
                             playing: true,
                         };
                         queue.set(message.guild.id, queueContract);
-                        queueContract.songs.push(song);
+                        let song =  args[0]
+                        queueContract.songs.push(song); //song with youtube url
                         try
                         {
                             playlist = await ytpl(args[0]);

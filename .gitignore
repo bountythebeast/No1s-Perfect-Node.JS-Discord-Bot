@@ -112,3 +112,5 @@ config.js
 config.json
 commands/todo
 commands/test.js
+/node_modules/*
+node_modules/*
