@@ -1,6 +1,6 @@
 const Command = require("../base/Command.js");
 const ytdl = require('ytdl-core');
-var ytpl = require('ytpl'); //testing
+//var ytpl = require('ytpl'); //testing. // uncomment for further testing...
 var stringTable = require('string-table');
 const { Channel } = require("discord.js");
 const queue = new Map();
@@ -166,7 +166,8 @@ class music extends Command
                         queueContract.songs.push(song); //song with youtube url
                         try
                         {
-                            playlist = await ytpl(args[0]);
+                            //playlist = await ytpl(args[0]);
+                            message.channel.send("error, beta build.")
                         }
                         catch
                         {
