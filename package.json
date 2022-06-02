@@ -33,7 +33,7 @@
     "node-opus": "^0.3.3",
     "nodeactyl": "^3.0.5",
     "nodeactyl-v1-support": "^1.5.1",
-    "npm": "^7.20.0",
+    "npm": "^8.11.0",
     "onchange": "^7.1.0",
     "opusscript": "^0.0.8",
     "paypal-invoices": "^1.5.0",
