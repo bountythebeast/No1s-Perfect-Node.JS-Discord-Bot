@@ -14,7 +14,7 @@
   "author": "No1's Perfect | Server Host#6666",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.8.0",
     "axios": "^0.21.2",
     "better-sqlite3": "^7.4.3",
     "chalk": "^4.1.1",
