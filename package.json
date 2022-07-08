@@ -27,7 +27,7 @@
     "klaw": "^3.0.0",
     "minecraft-query": "^1.0.9",
     "minecraft-server-util": "^3.5.2",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
     "mysql": "^2.18.1",
     "node-opus": "^0.3.3",
